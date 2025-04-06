@@ -38,7 +38,7 @@ export class AuthService {
     });
 
     const token = this.jwtService.sign({ email: newUser.email });
-    return { token, role: newUser.role, id: newUser._id };
+    return { token, role: newUser.role, id: newUser.id };
   }
 
   async signIn(signInDto: SignInDto): Promise<ReturnDataDto> {
@@ -59,7 +59,7 @@ export class AuthService {
     }
 
     const token = this.jwtService.sign({ email: userData.email });
-    return { token, role: userData.role, id: userData._id };
+    return { token, role: userData.role, id: userData.id };
   }
 
   async checkAuth(data: {
@@ -72,6 +72,6 @@ export class AuthService {
       throw new NotFoundException('Неправильный email или пароль!');
     }
 
-    return { role: userData.role, id: userData._id };
+    return { role: userData.role, id: userData.id };
   }
 }

@@ -39,12 +39,12 @@ export class SupportController {
 
     await this.supportService.sendMessage({
       authorId: body.userId,
-      supportRequestId: newRequest._id,
+      supportRequestId: newRequest.id,
       text: body.text,
     });
 
     const unReadCount = await this.supportClientService.getUnreadCount(
-      newRequest._id,
+      newRequest.id,
     );
 
     return {
